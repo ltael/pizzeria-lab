@@ -1,13 +1,16 @@
 from abc import ABC, abstractmethod
+from menu import Menu, MenuItem
+
 class TerminalWorker:
     def print_menu(self):
+        self._print_information
+
+
+    def make_order(self):
         pass
 
-    def receive_order(self):
-        pass
 
-
-class Command:
+class Command(ABC):
     @abstractmethod
     def get_discription(self):
         pass
@@ -36,7 +39,7 @@ class MakeOrder(Command):
         return "Сделать новый заказ"
 
     def execute(self):
-        self._terminal.receive_order()
+        self._terminal.make_order()
 
 
 class Exit(Command):
