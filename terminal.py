@@ -1,13 +1,18 @@
 from abc import ABC, abstractmethod
-from menu import Menu, MenuItem
+from menu import Menu
+from waiter import Waiter
+
 
 class TerminalWorker:
-    def print_menu(self):
-        self._print_information
+    def __init__(self):
+        self._menu = Menu()
+        self._waiter = Waiter(self._menu)
 
+    def print_menu(self):
+        self._menu.print_menu()
 
     def make_order(self):
-        pass
+        self._waiter.start_order()
 
 
 class Command(ABC):

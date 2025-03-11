@@ -1,24 +1,26 @@
 from pizza import PeperoniPizza, BarbecuePizza, SeaGiftsPizza
 
-
-class MenuItem:
-    def __init__(self, dish):
-        self._price = 555
-        self._name = 'Пицца'
-        self._description = 'Вкусная пицца'
-        self._weight = '400 грамм'
-        self._ingridients = []
-
-
-    def print_information(self):
-        print(f'{self._name} - {self._price} рублей', self._weight, self._description, self._description, sep='\n')
-
 class Menu:
     def __init__(self):
-        self._items = [MenuItem(PeperoniPizza),
-                       MenuItem(BarbecuePizza),
-                       MenuItem(SeaGiftsPizza)]
+        self._items = [PeperoniPizza(),
+                       BarbecuePizza(),
+                       SeaGiftsPizza()]
 
-    def print_information(self):
+    def get_item(self, number):
+        if number<=len(self._items):
+            return self._items[number-1]
+        else:
+            return None
+
+    def __len__(self):
+        return len(self._items)
+
+    def print_menu(self):
         for item in self._items:
-            item.print_information()
+            print(f"{item.get_name()} - {item.get_price()} рублей.")
+
+    def print_information(self, number):
+        if number<=len(self._items):
+            print(self._items[number-1])
+        else:
+            print(f"Позиции с номером {number} не существует.")
