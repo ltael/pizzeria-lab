@@ -1,13 +1,11 @@
-from os import remove
-
 from order import Order
 
 
-class Waiter:
+class Waiter: #класс Официента, работаюзего с пользователем
     def __init__(self, menu):
         self._menu = menu
 
-    def start_order(self):
+    def start_order(self): #функция, отвечающая за общение с пользователем и обработку его желаний
         self._finished = False
         self._current_order = Order()
         while not self._finished:

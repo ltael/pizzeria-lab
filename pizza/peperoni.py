@@ -1,6 +1,6 @@
 from pizza import Pizza
 
-class PeperoniPizza(Pizza):
+class PeperoniPizza(Pizza): #дочерный класс Пиццы - ПепперониПицца
     def __init__(self):
         super().__init__()
         self._ingredients = ['Дрожжевое тесто', 'Сыр моцарелла', 'Сырокопченая колбаса', 'Томатный соус']

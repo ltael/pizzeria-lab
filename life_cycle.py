@@ -1,6 +1,6 @@
 from terminal import MakeOrder, PrintMenu, Exit
 
-class ProgrammCycle:
+class ProgrammCycle: #класс, создающий интерфейс для пользователя и отправлящий выбор пользователя на обработку
     def __init__(self, terminal):
         self._terminal = terminal
         self._choices = {1: MakeOrder(terminal),
@@ -8,7 +8,7 @@ class ProgrammCycle:
                          3: Exit()}
 
     def _get_input(self):
-        print("Введите номер команд для выполнения.")
+        print("Введите номер команды для выполнения.")
         for choice in self._choices:
             print(choice, '-', self._choices[choice].get_discription())
         current_choice = int(input('Выбор команды: '))

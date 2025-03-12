@@ -3,7 +3,7 @@ from menu import Menu
 from waiter import Waiter
 
 
-class TerminalWorker:
+class TerminalWorker: #класс, обрабатывающий выбор в дальнейшем действии пользователя
     def __init__(self):
         self._menu = Menu()
         self._waiter = Waiter(self._menu)
@@ -15,7 +15,7 @@ class TerminalWorker:
         self._waiter.start_order()
 
 
-class Command(ABC):
+class Command(ABC): #абстрактный класс Команды с абстрактными методами
     @abstractmethod
     def get_discription(self):
         pass
@@ -25,7 +25,7 @@ class Command(ABC):
         pass
 
 
-class PrintMenu(Command):
+class PrintMenu(Command): #дочерний класс Вывода меню класса Команды
     def __init__(self, terminal):
         self._terminal = terminal
 
@@ -36,7 +36,7 @@ class PrintMenu(Command):
         self._terminal.print_menu()
 
 
-class MakeOrder(Command):
+class MakeOrder(Command): #дочерний класс Создания заказа класса Команды
     def __init__(self, terminal):
         self._terminal = terminal
 
@@ -47,7 +47,7 @@ class MakeOrder(Command):
         self._terminal.make_order()
 
 
-class Exit(Command):
+class Exit(Command): #дочерний класс Конца программы класса Команды
     def get_discription(self):
         return "Завершить программу"
 

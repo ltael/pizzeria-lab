@@ -1,6 +1,6 @@
 from pizza import Pizza
 
-class BarbecuePizza(Pizza):
+class BarbecuePizza(Pizza): #дочерный класс Пиццы - БарбекюПицца
     def __init__(self):
         super().__init__()
         self._ingredients = ['Дрожжевое тесто', 'Сыр твердый', 'Куриная грудка', 'Бекон', 'Зелень', 'Лук', 'Соус барбекю']

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-class Pizza(ABC):
+class Pizza(ABC): #абстрактный класс Пиццы с абстрактными и наследуемыми методами
     @abstractmethod
     def __init__(self):
         pass
