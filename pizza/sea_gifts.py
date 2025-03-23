@@ -1,6 +1,8 @@
-from pizza import Pizza
+from .custom_pizza import CustomPizza
+from .cook_mixin import CookMixin
 
-class SeaGiftsPizza(Pizza): #дочерный класс Пиццы - ДарыМоряПицца
+
+class SeaGiftsPizza(CustomPizza, CookMixin): #дочерный класс Пиццы - ДарыМоряПицца
     def __init__(self):
         super().__init__()
         self._ingredients = ['Дрожжевое тесто', 'Крабы', 'Кальмары', 'Креветки', 'Мидии', 'Сыр твердый', 'Соус Том Ям']
@@ -16,10 +18,10 @@ class SeaGiftsPizza(Pizza): #дочерный класс Пиццы - ДарыМ
                              'Погрузитесь в гастрономическое путешествие!')
 
     def collect_ingredients(self):
-            print('Подготавливаем ингридиенты для пиццы Дары Моря.')
+        print('Подготавливаем ингридиенты для пиццы Дары Моря.')
 
-    def cook(self):
-            print('Готовим пиццу Дары Моря.')
+    def prepare_sea_ingredients(self):
+        print('Чистим крабов, креветки, мидии, кальмары.')
 
     def __str__(self):
         return f'{self._name} - {self._price} рублей. \n {self._description} \n Игридиенты: {", ".join(self._ingredients)}'

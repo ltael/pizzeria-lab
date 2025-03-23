@@ -1,6 +1,8 @@
-from pizza import Pizza
+from .custom_pizza import CustomPizza
+from .cook_mixin import CookMixin
 
-class BarbecuePizza(Pizza): #дочерный класс Пиццы - БарбекюПицца
+
+class BarbecuePizza(CustomPizza, CookMixin): #дочерный класс Пиццы - БарбекюПицца
     def __init__(self):
         super().__init__()
         self._ingredients = ['Дрожжевое тесто', 'Сыр твердый', 'Куриная грудка', 'Бекон', 'Зелень', 'Лук', 'Соус барбекю']
@@ -14,10 +16,10 @@ class BarbecuePizza(Pizza): #дочерный класс Пиццы - Барбе
                              'вкусов. Попробуйте и ощутите гармонию каждого ингредиента!')
 
     def collect_ingredients(self):
-            print('Подготавливаем ингридиенты для пиццы Барбекю.')
+        print('Подготавливаем ингридиенты для пиццы Барбекю.')
 
-    def cook(self):
-            print('Готовим пиццу Барбекю.')
+    def cook_sauce(self):
+        print('Замешиваем соус Барбекю.')
 
     def __str__(self):
         return f'{self._name} - {self._price} рублей. \n {self._description} \n Игридиенты: {", ".join(self._ingredients)}'

@@ -1,7 +1,7 @@
 from order import Order
+from camel_case_meta import CamelCaseMeta
 
-
-class Waiter: #класс Официента, работаюзего с пользователем
+class Waiter(metaclass=CamelCaseMeta): #класс Официента, работаюзего с пользователем
     def __init__(self, menu):
         self._menu = menu
 
@@ -38,9 +38,31 @@ class Waiter: #класс Официента, работаюзего с поль
     def _add_item(self):
         print(f"Какое блюдо Вы хотите добавить в заказ?")
         self._menu.print_menu()
-        dish = int(input('Введите Ваш выбор ввиде цифры от 1 до 3: '))
+        print(f"Объединить две пиццы")
+        print(f"Убрать из пиццы игридиенты из другой пиццы")
+        dish = int(input('Введите Ваш выбор ввиде цифры от 1 до 5: '))
         if dish <= len(self._menu):
             self._current_order.add_item(self._menu.get_item(dish))
+        elif dish == (len(self._menu)+1):
+            print(f"Какие две пиццы Вы хотите объединить?")
+            self._menu.print_menu()
+            pizza1 = int(input('Введите цифру от 1 до 3 первой пиццы: '))
+            pizza2 = int(input('Введите цифру от 1 до 3 второй пиццы: '))
+            if pizza1 <= len(self._menu) and pizza2 <= len(self._menu):
+                combin_pizza = self._menu.get_item(pizza1) + self._menu.get_item(pizza2)
+                self._current_order.add_item(combin_pizza)
+            else:
+                print('Такое сочетание невозможно')
+        elif dish == (len(self._menu)+2):
+            print("Игридиенты какой пиццы вы хотите убрать из какой пиццы?")
+            self._menu.print_menu()
+            pizza1 = int(input('Введите цифру от 1 до 3 пиццы, из которой будем убирать игридиенты: '))
+            pizza2 = int(input('Введите цифру от 1 до 3 пиццы, игридиенты которой будет убирать: '))
+            if pizza1 <= len(self._menu) and pizza2 <= len(self._menu):
+                combin_pizza = self._menu.get_item(pizza1) - self._menu.get_item(pizza2)
+                self._current_order.add_item(combin_pizza)
+            else:
+                print('Такое сочетание невозможно')
         else:
             print("Такого блюда нет.")
 

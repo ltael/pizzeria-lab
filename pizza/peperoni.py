@@ -1,6 +1,8 @@
-from pizza import Pizza
+from .custom_pizza import CustomPizza
+from .cook_mixin import CookMixin
 
-class PeperoniPizza(Pizza): #дочерный класс Пиццы - ПепперониПицца
+
+class PeperoniPizza(CustomPizza, CookMixin): #дочерный класс Пиццы - ПепперониПицца
     def __init__(self):
         super().__init__()
         self._ingredients = ['Дрожжевое тесто', 'Сыр моцарелла', 'Сырокопченая колбаса', 'Томатный соус']
@@ -13,10 +15,10 @@ class PeperoniPizza(Pizza): #дочерный класс Пиццы - Пеппе
                              'итальянской кухни. Попробуйте — и вы не сможете остановиться!')
 
     def collect_ingredients(self):
-            print('Подготавливаем ингридиенты для пиццы Пепперони.')
+        print('Подготавливаем ингридиенты для пиццы Пепперони.')
 
-    def cook(self):
-            print('Готовим пиццу Пепперони.')
+    def cut_sausage(self):
+        print('Нарезаем колбаски.')
 
     def __str__(self):
         return f'{self._name} - {self._price} рублей. \n {self._description} \n Игридиенты: {", ".join(self._ingredients)}'

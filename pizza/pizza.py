@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 class Pizza(ABC): #абстрактный класс Пиццы с абстрактными и наследуемыми методами
     @abstractmethod
     def __init__(self):
@@ -27,3 +28,4 @@ class Pizza(ABC): #абстрактный класс Пиццы с абстра�
 
     def get_price(self):
         return self._price
+
