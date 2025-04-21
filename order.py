@@ -1,3 +1,4 @@
+import asyncio
 from time import sleep
 
 import time
@@ -44,18 +45,19 @@ class Order: #Класс заказа
     def check_order(function):
         def wrapper(self):
             if len(self._menu_items)>0:
-                function(self)
+                asyncio.run(function(self))
             else:
                 print('Нечего готовить(.')
         return wrapper
 
-    @track_time #сам все функции из cook отправляет в track_time
-    @check_order
-    def cook(self): #функция, запускающая готовку заказа пользователя
-        sleep(1)
+    #сам все функции из cook отправляет в track_time
+    async def cook(self): #функция, запускающая готовку заказа пользователя
+        array = []
         for item in self._menu_items:
             item.collect_ingredients()
-            item.cook()
+            array.append(asyncio.create_task(item.cook()))
+        await asyncio.gather(*array)
+        for item in self._menu_items:
             item.prepare()
             item.pack()
 

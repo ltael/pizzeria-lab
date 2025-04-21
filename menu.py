@@ -1,3 +1,4 @@
+from exceptions import NotExistingItemError
 from pizza import PeperoniPizza, BarbecuePizza, SeaGiftsPizza
 
 class Menu: #класс Меню, который хранит все позиции данной пиццерии
@@ -10,7 +11,7 @@ class Menu: #класс Меню, который хранит все позиц�
         if number<=len(self._items):
             return self._items[number-1]
         else:
-            return None
+            raise NotExistingItemError("Your item doesn't exist")
 
     def __len__(self):
         return len(self._items)
@@ -23,4 +24,4 @@ class Menu: #класс Меню, который хранит все позиц�
         if number<=len(self._items):
             print(self._items[number-1])
         else:
-            print(f"Позиции с номером {number} не существует.")
+            raise NotExistingItemError("Your item doesn't exist")
